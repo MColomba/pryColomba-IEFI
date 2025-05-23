@@ -49,7 +49,7 @@
             this.mnuModulos.Name = "mnuModulos";
             this.mnuModulos.Size = new System.Drawing.Size(800, 24);
             this.mnuModulos.TabIndex = 0;
-            this.mnuModulos.Text = "menuStrip1";
+            this.mnuModulos.Text = "mnuModulos";
             // 
             // mnuTareas
             // 
@@ -69,13 +69,13 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.usuariosToolStripMenuItem.Text = "Usuarios";
             // 
             // auditoriaToolStripMenuItem
             // 
             this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
-            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.auditoriaToolStripMenuItem.Text = "Auditoria";
             // 
             // sstConexion
