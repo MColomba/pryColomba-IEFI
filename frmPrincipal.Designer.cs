@@ -42,6 +42,7 @@
             // 
             // mnuModulos
             // 
+            this.mnuModulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.mnuModulos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTareas,
             this.mnuAdministracion});
@@ -80,6 +81,7 @@
             // 
             // sstConexion
             // 
+            this.sstConexion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.sstConexion.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblUsuario,
             this.lblFecha});
@@ -105,6 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.sstConexion);
             this.Controls.Add(this.mnuModulos);

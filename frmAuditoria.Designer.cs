@@ -44,7 +44,7 @@
             // 
             this.dgvAuditoria.AllowUserToAddRows = false;
             this.dgvAuditoria.AllowUserToDeleteRows = false;
-            this.dgvAuditoria.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dgvAuditoria.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.dgvAuditoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAuditoria.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
             this.dgvAuditoria.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
@@ -59,6 +59,7 @@
             // 
             // mnuModulos
             // 
+            this.mnuModulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.mnuModulos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuUsuario});
             this.mnuModulos.Location = new System.Drawing.Point(0, 0);
@@ -119,6 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(404, 450);
             this.Controls.Add(this.btnRecargar);
             this.Controls.Add(this.txtBuscarUsuario);
