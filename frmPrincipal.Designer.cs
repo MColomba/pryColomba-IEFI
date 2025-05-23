@@ -110,6 +110,7 @@
             this.Controls.Add(this.mnuModulos);
             this.MainMenuStrip = this.mnuModulos;
             this.Name = "frmPrincipal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmPrincipal";
             this.mnuModulos.ResumeLayout(false);
             this.mnuModulos.PerformLayout();

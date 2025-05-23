@@ -79,13 +79,13 @@
             // detalleToolStripMenuItem
             // 
             this.detalleToolStripMenuItem.Name = "detalleToolStripMenuItem";
-            this.detalleToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.detalleToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.detalleToolStripMenuItem.Text = "Detalle";
             // 
             // resumenToolStripMenuItem
             // 
             this.resumenToolStripMenuItem.Name = "resumenToolStripMenuItem";
-            this.resumenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.resumenToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.resumenToolStripMenuItem.Text = "Resumen";
             // 
             // lblBuscarUsuario
@@ -127,6 +127,7 @@
             this.Controls.Add(this.mnuModulos);
             this.MainMenuStrip = this.mnuModulos;
             this.Name = "frmAuditoria";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Auditoria";
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditoria)).EndInit();
             this.mnuModulos.ResumeLayout(false);
