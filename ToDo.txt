@@ -1,0 +1,17 @@
+Crear la base de datos en Access
+agregar iconos, hacerlo bonito al formulario, hacer que se inicie la app en medio de la pantalla
+
+podria agregar un recuperar contraseña en el login
+
+cuando se inicia la sesion se abre el frmPrincipal y se corre la funcion de auditoria, en la que guarda la fecha, el usuario y el tiempo de uso, al cerrar la aplicacion se guarda los datos de auditoria
+
+Cuando ingreso en Administracion - Auditoria muestro en una tabla los datos de auditoria
+tiempo total en minutos
+
+en el auditoria tengo que mostrar dos tipos:
+detalle, que muestra cada registro de auditoria
+resumen, que muestra todo el tiempo sumado de cada usuario
+
+poner la funcion de que busque por usuario en ambos tipos de auditoria
+
+en auditoria tengo que poner para que se exporte a excel por ejemplo
