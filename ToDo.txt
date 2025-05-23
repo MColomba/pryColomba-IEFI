@@ -1,4 +1,7 @@
 Crear la base de datos en Access
+agregar iconos, hacerlo bonito al formulario, hacer que se inicie la app en medio de la pantalla
+
+podria agregar un recuperar contraseña en el login
 Cuando se inicia la sesion, se inicia el contador de tiempo de uso de la aplicacion, pero se muestra el frmPrincipal, cuando se cierra se guarda en la base de datos
 
 cuando se inicia la sesion se abre el frmPrincipal y se corre la funcion de auditoria, en la que guarda la fecha, el usuario y el tiempo de uso, al cerrar la aplicacion se guarda los datos de auditoria
