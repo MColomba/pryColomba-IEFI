@@ -37,6 +37,7 @@
             this.btnRecargar = new System.Windows.Forms.Button();
             this.cmbTipoListado = new System.Windows.Forms.ComboBox();
             this.lblTipoListado = new System.Windows.Forms.Label();
+            this.btnExportar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditoria)).BeginInit();
             this.mnuModulos.SuspendLayout();
             this.SuspendLayout();
@@ -46,7 +47,6 @@
             this.dgvAuditoria.AllowUserToAddRows = false;
             this.dgvAuditoria.AllowUserToDeleteRows = false;
             this.dgvAuditoria.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvAuditoria.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAuditoria.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SunkenHorizontal;
             this.dgvAuditoria.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             this.dgvAuditoria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -55,7 +55,7 @@
             this.dgvAuditoria.ReadOnly = true;
             this.dgvAuditoria.RowHeadersVisible = false;
             this.dgvAuditoria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAuditoria.Size = new System.Drawing.Size(415, 353);
+            this.dgvAuditoria.Size = new System.Drawing.Size(627, 382);
             this.dgvAuditoria.TabIndex = 0;
             // 
             // mnuModulos
@@ -66,7 +66,7 @@
             this.mnuSalir});
             this.mnuModulos.Location = new System.Drawing.Point(0, 0);
             this.mnuModulos.Name = "mnuModulos";
-            this.mnuModulos.Size = new System.Drawing.Size(440, 24);
+            this.mnuModulos.Size = new System.Drawing.Size(651, 24);
             this.mnuModulos.TabIndex = 1;
             this.mnuModulos.Text = "mnuModulos";
             // 
@@ -117,7 +117,7 @@
             this.cmbTipoListado.Items.AddRange(new object[] {
             "Detallado",
             "Resumido"});
-            this.cmbTipoListado.Location = new System.Drawing.Point(317, 36);
+            this.cmbTipoListado.Location = new System.Drawing.Point(294, 36);
             this.cmbTipoListado.Name = "cmbTipoListado";
             this.cmbTipoListado.Size = new System.Drawing.Size(110, 21);
             this.cmbTipoListado.TabIndex = 5;
@@ -125,19 +125,30 @@
             // lblTipoListado
             // 
             this.lblTipoListado.AutoSize = true;
-            this.lblTipoListado.Location = new System.Drawing.Point(267, 39);
+            this.lblTipoListado.Location = new System.Drawing.Point(244, 39);
             this.lblTipoListado.Name = "lblTipoListado";
             this.lblTipoListado.Size = new System.Drawing.Size(44, 13);
             this.lblTipoListado.TabIndex = 6;
             this.lblTipoListado.Text = "Listado:";
+            // 
+            // btnExportar
+            // 
+            this.btnExportar.Location = new System.Drawing.Point(546, 451);
+            this.btnExportar.Name = "btnExportar";
+            this.btnExportar.Size = new System.Drawing.Size(93, 23);
+            this.btnExportar.TabIndex = 7;
+            this.btnExportar.Text = "Exportar a Excel";
+            this.btnExportar.UseVisualStyleBackColor = true;
+            this.btnExportar.Click += new System.EventHandler(this.btnExportar_Click);
             // 
             // frmAuditoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(440, 450);
+            this.ClientSize = new System.Drawing.Size(651, 486);
             this.ControlBox = false;
+            this.Controls.Add(this.btnExportar);
             this.Controls.Add(this.lblTipoListado);
             this.Controls.Add(this.cmbTipoListado);
             this.Controls.Add(this.btnRecargar);
@@ -168,5 +179,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuSalir;
         private System.Windows.Forms.ComboBox cmbTipoListado;
         private System.Windows.Forms.Label lblTipoListado;
+        private System.Windows.Forms.Button btnExportar;
     }
 }

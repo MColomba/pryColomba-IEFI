@@ -63,5 +63,10 @@ namespace pryColomba_IEFI
         {
             CargarListado();
         }
+
+        private void btnExportar_Click(object sender, EventArgs e)
+        {
+            //revisar https://stackoverflow.com/questions/18182029/how-to-export-datagridview-data-instantly-to-excel-on-button-click
+        }
     }
 }

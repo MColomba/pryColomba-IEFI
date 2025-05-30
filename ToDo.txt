@@ -1,7 +1,10 @@
 To Do:
 -Añadir a los usuarios roles para que puedan ver ciertas partes del sistema
+	Administrador: puede ver el mnu administracion
 -Lograr subir la base de datos a Github
-
+-Agregar la capacidad de agregar, modificar y crear usuarios (Administracion - usuarios)
+-Al crear un usuario agregar 5 datos personales(dni, nombres, apellidos, direccion, ) y datos del sistema(usuario, contraseña y rol)
+-Crear tabla de personas en donde se guarden los datos personales
 Optional:
 -Agregar iconos
 -Funcion para recuperar la contraseña en el frmLogin
