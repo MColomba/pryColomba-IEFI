@@ -3,10 +3,8 @@ To Do:
 	*Detalle: muestro cada registro de la tabla Auditoria de la base de datos
 	*Resumen: muestro por cada linea el usuario y la suma de sus tiempo de uso de la aplicacion
 	Permitir buscar y rellenar el listado con los datos de un usuario
-
+-Añadir a los usuarios roles para que puedan ver ciertas partes del sistema
 Optional:
 -Agregar iconos
--Que los formularios se inicien en medio de la pantalla
--Que sean bonitos de ver
 -Funcion para recuperar la contraseña en el frmLogin
 -Exportar a excel en el frmAuditoria

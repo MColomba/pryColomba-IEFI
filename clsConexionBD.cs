@@ -9,7 +9,7 @@ namespace pryColomba_IEFI
 {
     internal class clsConexionBD
     {
-        string strConnection = "Server=DESKTOP-IBE81TI;Database=IEFI;Trusted_Connection=True;";
+        string strConnection = "Server=localhost;Database=IEFI;Trusted_Connection=True;";
         SqlConnection objConnection;
         string strError;
 

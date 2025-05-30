@@ -23,7 +23,7 @@ namespace pryColomba_IEFI
         }
         private void btnIniciar_Click(object sender, EventArgs e)
         {
-            this.Visible = false;
+            this.Hide();
 
             clsUsuarios UsuarioLog = new clsUsuarios();
             if (UsuarioLog.ValidarUsuario(txtUsuario.Text, txtContraseña.Text) != false)
@@ -31,12 +31,12 @@ namespace pryColomba_IEFI
                 frmPrincipal Principal = new frmPrincipal(UsuarioLog.GetCodigo(), UsuarioLog.GetNombre());
                 Principal.ShowDialog();
                 Principal = null;
-                this.Visible = true;
+                this.Show();
             }
             else
             {
                 MessageBox.Show(UsuarioLog.GetError(), "Error Inicio Sesion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                this.Visible = true;
+                this.Show();
                 txtUsuario.Clear();
                 txtContraseña.Clear();
             } 
