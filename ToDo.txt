@@ -1,9 +1,7 @@
 To Do:
--En el frmAuditoria le doy dos opciones para mostrarle un listado, estas son:
-	*Detalle: muestro cada registro de la tabla Auditoria de la base de datos
-	*Resumen: muestro por cada linea el usuario y la suma de sus tiempo de uso de la aplicacion
-	Permitir buscar y rellenar el listado con los datos de un usuario
 -Añadir a los usuarios roles para que puedan ver ciertas partes del sistema
+-Lograr subir la base de datos a Github
+
 Optional:
 -Agregar iconos
 -Funcion para recuperar la contraseña en el frmLogin
