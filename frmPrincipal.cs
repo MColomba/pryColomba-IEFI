@@ -20,14 +20,16 @@ namespace pryColomba_IEFI
             CodigoUsuario = Codigo;
             lblUsuario.Text = Nombre;
             lblFecha.Text = DateTime.Now.ToString();
+            IniciarAuditoria();
         }
         public void IniciarAuditoria()
         {
-
+            Auditoria = new clsAuditoria(CodigoUsuario);
         }
         public void TerminarAuditoria()
         {
-
+            Auditoria.SetTiempoUso(DateTime.Now);
+            Auditoria.GrabarAuditoria();
         }
 
         private void mnuCerrar_Click(object sender, EventArgs e)
