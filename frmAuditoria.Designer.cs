@@ -36,6 +36,7 @@
             this.lblBuscarUsuario = new System.Windows.Forms.Label();
             this.txtBuscarUsuario = new System.Windows.Forms.TextBox();
             this.btnRecargar = new System.Windows.Forms.Button();
+            this.mnuSalir = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuditoria)).BeginInit();
             this.mnuModulos.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +62,8 @@
             // 
             this.mnuModulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.mnuModulos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuUsuario});
+            this.mnuUsuario,
+            this.mnuSalir});
             this.mnuModulos.Location = new System.Drawing.Point(0, 0);
             this.mnuModulos.Name = "mnuModulos";
             this.mnuModulos.Size = new System.Drawing.Size(404, 24);
@@ -116,6 +118,13 @@
             this.btnRecargar.TabIndex = 4;
             this.btnRecargar.UseVisualStyleBackColor = false;
             // 
+            // mnuSalir
+            // 
+            this.mnuSalir.Name = "mnuSalir";
+            this.mnuSalir.Size = new System.Drawing.Size(41, 20);
+            this.mnuSalir.Text = "Salir";
+            this.mnuSalir.Click += new System.EventHandler(this.mnuSalir_Click);
+            // 
             // frmAuditoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -150,5 +159,6 @@
         private System.Windows.Forms.Label lblBuscarUsuario;
         private System.Windows.Forms.TextBox txtBuscarUsuario;
         private System.Windows.Forms.Button btnRecargar;
+        private System.Windows.Forms.ToolStripMenuItem mnuSalir;
     }
 }

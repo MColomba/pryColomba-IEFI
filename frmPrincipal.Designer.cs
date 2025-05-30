@@ -31,11 +31,12 @@
             this.mnuModulos = new System.Windows.Forms.MenuStrip();
             this.mnuTareas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdministracion = new System.Windows.Forms.ToolStripMenuItem();
-            this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.auditoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAdminUsuarios = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAdminAuditoria = new System.Windows.Forms.ToolStripMenuItem();
             this.sstConexion = new System.Windows.Forms.StatusStrip();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblFecha = new System.Windows.Forms.ToolStripStatusLabel();
+            this.mnuCerrar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuModulos.SuspendLayout();
             this.sstConexion.SuspendLayout();
             this.SuspendLayout();
@@ -45,7 +46,8 @@
             this.mnuModulos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.mnuModulos.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuTareas,
-            this.mnuAdministracion});
+            this.mnuAdministracion,
+            this.mnuCerrar});
             this.mnuModulos.Location = new System.Drawing.Point(0, 0);
             this.mnuModulos.Name = "mnuModulos";
             this.mnuModulos.Size = new System.Drawing.Size(800, 24);
@@ -61,23 +63,24 @@
             // mnuAdministracion
             // 
             this.mnuAdministracion.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usuariosToolStripMenuItem,
-            this.auditoriaToolStripMenuItem});
+            this.mnuAdminUsuarios,
+            this.mnuAdminAuditoria});
             this.mnuAdministracion.Name = "mnuAdministracion";
             this.mnuAdministracion.Size = new System.Drawing.Size(100, 20);
             this.mnuAdministracion.Text = "Administracion";
             // 
-            // usuariosToolStripMenuItem
+            // mnuAdminUsuarios
             // 
-            this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.mnuAdminUsuarios.Name = "mnuAdminUsuarios";
+            this.mnuAdminUsuarios.Size = new System.Drawing.Size(180, 22);
+            this.mnuAdminUsuarios.Text = "Usuarios";
             // 
-            // auditoriaToolStripMenuItem
+            // mnuAdminAuditoria
             // 
-            this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
-            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
-            this.auditoriaToolStripMenuItem.Text = "Auditoria";
+            this.mnuAdminAuditoria.Name = "mnuAdminAuditoria";
+            this.mnuAdminAuditoria.Size = new System.Drawing.Size(180, 22);
+            this.mnuAdminAuditoria.Text = "Auditoria";
+            this.mnuAdminAuditoria.Click += new System.EventHandler(this.mnuAdminAuditoria_Click);
             // 
             // sstConexion
             // 
@@ -102,6 +105,13 @@
             this.lblFecha.Name = "lblFecha";
             this.lblFecha.Size = new System.Drawing.Size(38, 17);
             this.lblFecha.Text = "Fecha";
+            // 
+            // mnuCerrar
+            // 
+            this.mnuCerrar.Name = "mnuCerrar";
+            this.mnuCerrar.Size = new System.Drawing.Size(88, 20);
+            this.mnuCerrar.Text = "Cerrar Sesion";
+            this.mnuCerrar.Click += new System.EventHandler(this.mnuCerrar_Click);
             // 
             // frmPrincipal
             // 
@@ -130,10 +140,11 @@
         private System.Windows.Forms.MenuStrip mnuModulos;
         private System.Windows.Forms.ToolStripMenuItem mnuTareas;
         private System.Windows.Forms.ToolStripMenuItem mnuAdministracion;
-        private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem auditoriaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuAdminUsuarios;
+        private System.Windows.Forms.ToolStripMenuItem mnuAdminAuditoria;
         private System.Windows.Forms.StatusStrip sstConexion;
         private System.Windows.Forms.ToolStripStatusLabel lblUsuario;
         private System.Windows.Forms.ToolStripStatusLabel lblFecha;
+        private System.Windows.Forms.ToolStripMenuItem mnuCerrar;
     }
 }

@@ -16,5 +16,10 @@ namespace pryColomba_IEFI
         {
             InitializeComponent();
         }
+
+        private void mnuSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

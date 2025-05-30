@@ -16,5 +16,30 @@ namespace pryColomba_IEFI
         {
             InitializeComponent();
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void btnIniciar_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+
+            clsUsuarios UsuarioLog = new clsUsuarios();
+            if (UsuarioLog.ValidarUsuario(txtUsuario.Text, txtContraseña.Text) != false)
+            {
+                frmPrincipal Principal = new frmPrincipal(UsuarioLog.GetCodigo(), UsuarioLog.GetNombre());
+                Principal.ShowDialog();
+                Principal = null;
+                this.Visible = true;
+            }
+            else
+            {
+                MessageBox.Show(UsuarioLog.GetError(), "Error Inicio Sesion", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                this.Visible = true;
+                txtUsuario.Clear();
+                txtContraseña.Clear();
+            } 
+        }
     }
 }
