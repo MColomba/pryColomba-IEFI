@@ -122,6 +122,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(404, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.btnRecargar);
             this.Controls.Add(this.txtBuscarUsuario);
             this.Controls.Add(this.lblBuscarUsuario);

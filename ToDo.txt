@@ -1,17 +1,18 @@
-Crear la base de datos en Access
-agregar iconos, hacerlo bonito al formulario, hacer que se inicie la app en medio de la pantalla
+To Do:
+-Cuando inicia sesion exitosamente se tiene que iniciar una funcion Auditoria,
+	en esta se guarda el usuario, la fecha y la hora en la que se inicio,
+	cuando la app se cierre hacer que se guarde en la base de datos en la tabla auditoria
+	los datos de usuario, fecha y tiempo total de uso
+-Sacar del frmPrincipal las opciones de windows de la cruz para que no se pueda cerrar de una forma
+	distinta para que la funcion de auditoria no falle
+-En el frmAuditoria le doy dos opciones para mostrarle un listado, estas son:
+	*Detalle: muestro cada registro de la tabla Auditoria de la base de datos
+	*Resumen: muestro por cada linea el usuario y la suma de sus tiempo de uso de la aplicacion
+	Permitir buscar y rellenar el listado con los datos de un usuario
 
-podria agregar un recuperar contraseña en el login
-
-cuando se inicia la sesion se abre el frmPrincipal y se corre la funcion de auditoria, en la que guarda la fecha, el usuario y el tiempo de uso, al cerrar la aplicacion se guarda los datos de auditoria
-
-Cuando ingreso en Administracion - Auditoria muestro en una tabla los datos de auditoria
-tiempo total en minutos
-
-en el auditoria tengo que mostrar dos tipos:
-detalle, que muestra cada registro de auditoria
-resumen, que muestra todo el tiempo sumado de cada usuario
-
-poner la funcion de que busque por usuario en ambos tipos de auditoria
-
-en auditoria tengo que poner para que se exporte a excel por ejemplo
+Optional:
+-Agregar iconos
+-Que los formularios se inicien en medio de la pantalla
+-Que sean bonitos de ver
+-Funcion para recuperar la contraseña en el frmLogin
+-Exportar a excel en el frmAuditoria
