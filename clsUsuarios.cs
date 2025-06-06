@@ -12,6 +12,7 @@ namespace pryColomba_IEFI
         //Atributos
         int Codigo;
         string Nombre;
+        int Rol;
         string Error;
 
         //Constructor
@@ -21,7 +22,13 @@ namespace pryColomba_IEFI
             Nombre = "";
             Error = "";
         }
-
+        public clsUsuarios(string Nombre, int Rol)
+        {
+            this.Codigo = 0;
+            this.Nombre = Nombre;
+            this.Rol = Rol;
+            this.Error = "";
+        }
         //Funciones
         public bool ValidarUsuario(string Nombre, string Contraseña)
         {
@@ -41,6 +48,7 @@ namespace pryColomba_IEFI
                     {
                         this.Codigo = Convert.ToInt32(reader["Codigo"]);
                         this.Nombre = reader["Nombre"].ToString();
+                        this.Rol = int.Parse(reader["Rol"].ToString());
                         Validado = true;
                     }
                     else
@@ -58,6 +66,19 @@ namespace pryColomba_IEFI
             Conexion.CloseConnection();
 
             return Validado;
+        }
+
+        public void GrabarUsuario(string Contraseña)
+        {
+            clsConexionBD Conexion = new clsConexionBD();
+
+            string strQuery = "INSERT INTO Usuarios (Nombre, Contraseña, Rol) VALUES (@nombre, @contraseña, @rol)";
+
+            SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+            objCommand.Parameters.AddWithValue("@nombre", this.Nombre);
+            objCommand.Parameters.AddWithValue("@contraseña", Contraseña);
+            objCommand.Parameters.AddWithValue("@rol", this.Rol);
+            objCommand.ExecuteNonQuery();
         }
 
         //Gets

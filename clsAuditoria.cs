@@ -28,7 +28,8 @@ namespace pryColomba_IEFI
         }
         public clsAuditoria(int Usuario, string NomUsuario, DateTime Fecha, double TiempoUso)
         {
-            this.NomUsuario= string.Empty;
+            this.Usuario = Usuario;
+            this.NomUsuario = NomUsuario;
             this.Fecha = Fecha;
             this.TiempoUso= TiempoUso;
             this.Error = string.Empty;
@@ -57,6 +58,7 @@ namespace pryColomba_IEFI
         {
             List<clsAuditoria> ListaCompleta = new List<clsAuditoria>();
             clsConexionBD Conexion = new clsConexionBD();
+            clsAuditoria item;
 
             string strQuery = "Select a.Usuario, u.Nombre, a.Fecha, a.TiempoUso from Auditoria a JOIN Usuarios u on u.Codigo = a.Usuario";
             SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
@@ -65,7 +67,7 @@ namespace pryColomba_IEFI
             {
                 while (reader.Read())
                 {
-                    clsAuditoria item = new clsAuditoria(int.Parse(reader["Usuario"].ToString()), reader["Nombre"].ToString(), DateTime.Parse(reader["Fecha"].ToString()), double.Parse(reader["TiempoUso"].ToString()));
+                    item = new clsAuditoria(int.Parse(reader["Usuario"].ToString()), reader["Nombre"].ToString(), DateTime.Parse(reader["Fecha"].ToString()), double.Parse(reader["TiempoUso"].ToString()));
                     ListaCompleta.Add(item);
                 }
             }

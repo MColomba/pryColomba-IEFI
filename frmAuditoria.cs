@@ -40,7 +40,7 @@ namespace pryColomba_IEFI
                     dgvAuditoria.Columns.Add("Fecha", "Fecha");
                     dgvAuditoria.Columns.Add("TiempoUso", "Tiempo de Uso");
 
-                    foreach (clsAuditoria item in ListaCompleta)
+                    foreach (var item in ListaCompleta)
                     {
                         dgvAuditoria.Rows.Add(item.GetUsuario(), item.GetNomUsuario(), item.GetFecha().ToString("dd/MM/yyyy"), item.GetTiempoUso());
                     }
@@ -51,7 +51,7 @@ namespace pryColomba_IEFI
                     dgvAuditoria.Columns.Add("Nombre", "Nombre");
                     dgvAuditoria.Columns.Add("TiempoUso", "Tiempo de Uso Total");
 
-                    foreach (clsAuditoria item in ListaResumida)
+                    foreach (var item in ListaResumida)
                     {
                         dgvAuditoria.Rows.Add(item.GetNomUsuario(), item.GetTiempoUso());
                     }

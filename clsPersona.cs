@@ -11,7 +11,17 @@ namespace pryColomba_IEFI
         string Documento;
         string NombreCompleto;
         string Direccion;
-        int Rol;
+        DateTime FechaNacimiento;
+        string Telefono;
+
+        public clsPersona()
+        {
+
+        }
+        public void GrabarPersona()
+        {
+
+        }
 
     }
 }
