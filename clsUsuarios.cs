@@ -13,6 +13,7 @@ namespace pryColomba_IEFI
         int Codigo;
         string Nombre;
         int Rol;
+        string NombreRol;
         string Error;
 
         //Constructor
@@ -29,11 +30,20 @@ namespace pryColomba_IEFI
             this.Rol = Rol;
             this.Error = "";
         }
+        public clsUsuarios(int Codigo, string Nombre, int CodigoRol, string NombreRol)
+        {
+            this.Codigo = Codigo;
+            this.Nombre = Nombre;
+            this.Rol = CodigoRol;
+            this.NombreRol = NombreRol;
+            this.Error = "";
+        }
         //Funciones
         public bool ValidarUsuario(string Nombre, string Contraseña)
         {
             bool Validado = false;
             clsConexionBD Conexion = new clsConexionBD();
+            
 
             string strQuery = "SELECT * FROM Usuarios where NOMBRE = '" + Nombre +"'";
 
@@ -81,6 +91,30 @@ namespace pryColomba_IEFI
             objCommand.ExecuteNonQuery();
         }
 
+        public List<clsUsuarios> ListarUsuarios()
+        {
+            List<clsUsuarios> Lista = new List<clsUsuarios>();
+
+            clsConexionBD Conexion = new clsConexionBD();
+            clsUsuarios item;
+
+            string strQuery = "SELECT u.Codigo, u.Nombre, r.Codigo as CodigoRol, r.NombreRol FROM Usuarios u JOIN Roles r on r.Codigo = u.Rol";
+
+            SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+            SqlDataReader reader = objCommand.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    item = new clsUsuarios(int.Parse(reader["Codigo"].ToString()), reader["Nombre"].ToString(), int.Parse(reader["CodigoRol"].ToString()), reader["NombreRol"].ToString());
+                    Lista.Add(item);
+                }
+            }
+
+            return Lista;
+        }
+
         //Gets
         public string GetError()
         {
@@ -93,6 +127,14 @@ namespace pryColomba_IEFI
         public int GetCodigo()
         {
             return this.Codigo;
+        }
+        public int GetRol()
+        {
+            return this.Rol;
+        }
+        public string GetNombreRol()
+        {
+            return this.NombreRol;
         }
     }
 }

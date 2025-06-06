@@ -72,14 +72,14 @@
             // mnuAdminUsuarios
             // 
             this.mnuAdminUsuarios.Name = "mnuAdminUsuarios";
-            this.mnuAdminUsuarios.Size = new System.Drawing.Size(180, 22);
+            this.mnuAdminUsuarios.Size = new System.Drawing.Size(123, 22);
             this.mnuAdminUsuarios.Text = "Usuarios";
             this.mnuAdminUsuarios.Click += new System.EventHandler(this.mnuAdminUsuarios_Click);
             // 
             // mnuAdminAuditoria
             // 
             this.mnuAdminAuditoria.Name = "mnuAdminAuditoria";
-            this.mnuAdminAuditoria.Size = new System.Drawing.Size(180, 22);
+            this.mnuAdminAuditoria.Size = new System.Drawing.Size(123, 22);
             this.mnuAdminAuditoria.Text = "Auditoria";
             this.mnuAdminAuditoria.Click += new System.EventHandler(this.mnuAdminAuditoria_Click);
             // 
@@ -126,7 +126,7 @@
             this.MainMenuStrip = this.mnuModulos;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Principal";
+            this.Text = "Pantalla Principal";
             this.mnuModulos.ResumeLayout(false);
             this.mnuModulos.PerformLayout();
             this.sstConexion.ResumeLayout(false);

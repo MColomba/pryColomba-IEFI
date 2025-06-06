@@ -28,53 +28,35 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UsuarioNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.UsuarioRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UsuarioNom = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UsuarioRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvUsuarios
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvUsuarios.AllowUserToAddRows = false;
+            this.dgvUsuarios.AllowUserToDeleteRows = false;
+            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUsuarios.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo,
             this.UsuarioNom,
             this.UsuarioRol});
-            this.dataGridView1.Location = new System.Drawing.Point(25, 25);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(318, 303);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // UsuarioNom
-            // 
-            this.UsuarioNom.HeaderText = "UsuarioNom";
-            this.UsuarioNom.Name = "UsuarioNom";
-            this.UsuarioNom.ReadOnly = true;
-            // 
-            // UsuarioRol
-            // 
-            this.UsuarioRol.HeaderText = "UsuarioRol";
-            this.UsuarioRol.Name = "UsuarioRol";
-            this.UsuarioRol.ReadOnly = true;
+            this.dgvUsuarios.Location = new System.Drawing.Point(25, 25);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ReadOnly = true;
+            this.dgvUsuarios.RowHeadersVisible = false;
+            this.dgvUsuarios.Size = new System.Drawing.Size(318, 303);
+            this.dgvUsuarios.TabIndex = 0;
             // 
             // btnAgregar
             // 
@@ -113,6 +95,24 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
+            // Codigo
+            // 
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // UsuarioNom
+            // 
+            this.UsuarioNom.HeaderText = "UsuarioNom";
+            this.UsuarioNom.Name = "UsuarioNom";
+            this.UsuarioNom.ReadOnly = true;
+            // 
+            // UsuarioRol
+            // 
+            this.UsuarioRol.HeaderText = "UsuarioRol";
+            this.UsuarioRol.Name = "UsuarioRol";
+            this.UsuarioRol.ReadOnly = true;
+            // 
             // Usuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,23 +124,23 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.btnAgregar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvUsuarios);
             this.Name = "Usuario";
             this.Text = "Usuarios";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioNom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioRol;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioNom;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UsuarioRol;
     }
 }
