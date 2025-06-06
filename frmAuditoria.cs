@@ -26,6 +26,9 @@ namespace pryColomba_IEFI
         }
         public void CargarListado()
         {
+            dgvAuditoria.Rows.Clear();
+            dgvAuditoria.Columns.Clear();
+
             clsAuditoria Auditoria = new clsAuditoria(0);
             switch (cmbTipoListado.SelectedIndex)
             {
@@ -50,7 +53,7 @@ namespace pryColomba_IEFI
 
                     foreach (clsAuditoria item in ListaResumida)
                     {
-                        dgvAuditoria.Rows.Add(item.GetUsuario(), item.GetNomUsuario(), item.GetFecha().ToString("dd/MM/yyyy"), item.GetTiempoUso());
+                        dgvAuditoria.Rows.Add(item.GetNomUsuario(), item.GetTiempoUso());
                     }
                     break;
                 default:

@@ -43,5 +43,11 @@ namespace pryColomba_IEFI
             frmAuditoria Auditoria = new frmAuditoria();
             Auditoria.ShowDialog();
         }
+
+        private void mnuAdminUsuarios_Click(object sender, EventArgs e)
+        {
+            Usuario Usuario = new Usuario();
+            Usuario.ShowDialog();
+        }
     }
 }

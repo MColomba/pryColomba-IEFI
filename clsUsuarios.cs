@@ -9,16 +9,20 @@ namespace pryColomba_IEFI
 {
     internal class clsUsuarios
     {
+        //Atributos
         int Codigo;
         string Nombre;
         string Error;
 
+        //Constructor
         public clsUsuarios()
         {
             Codigo = 0;
             Nombre = "";
             Error = "";
         }
+
+        //Funciones
         public bool ValidarUsuario(string Nombre, string Contraseña)
         {
             bool Validado = false;
@@ -55,6 +59,8 @@ namespace pryColomba_IEFI
 
             return Validado;
         }
+
+        //Gets
         public string GetError()
         {
             return this.Error;

@@ -10,12 +10,14 @@ namespace pryColomba_IEFI
 {
     internal class clsAuditoria
     {
+        //Atributos
         int Usuario;
         string NomUsuario;
         DateTime Fecha;
         double TiempoUso;
         string Error;
 
+        //Constructores
         public clsAuditoria(int Usuario)
         {
             this.Usuario = Usuario;
@@ -31,10 +33,14 @@ namespace pryColomba_IEFI
             this.TiempoUso= TiempoUso;
             this.Error = string.Empty;
         }
+
+        //Sets
         public void SetTiempoUso(DateTime Actual)
         {
-            this.TiempoUso = Fecha.Subtract(Actual).Minutes;
+            this.TiempoUso = Actual.Subtract(Fecha).Minutes;
         }
+
+        //Funciones
         public void GrabarAuditoria()
         {
             clsConexionBD Conexion = new clsConexionBD();
@@ -42,7 +48,6 @@ namespace pryColomba_IEFI
             string strQuery = "INSERT INTO Auditoria (Usuario, Fecha, TiempoUso) VALUES (@usuario, @fecha, @tiempoUso)";
 
             SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
-            SqlDataReader reader = objCommand.ExecuteReader();
             objCommand.Parameters.AddWithValue("@usuario", this.Usuario);
             objCommand.Parameters.AddWithValue("@fecha", this.Fecha.Date);
             objCommand.Parameters.AddWithValue("@tiempoUso", TiempoUso);
@@ -60,7 +65,7 @@ namespace pryColomba_IEFI
             {
                 while (reader.Read())
                 {
-                    clsAuditoria item = new clsAuditoria(int.Parse(reader["Usuario"].ToString()),reader["Nombre"].ToString(), DateTime.Parse(reader["Fecha"].ToString()), double.Parse(reader["TiempoUso"].ToString()));
+                    clsAuditoria item = new clsAuditoria(int.Parse(reader["Usuario"].ToString()), reader["Nombre"].ToString(), DateTime.Parse(reader["Fecha"].ToString()), double.Parse(reader["TiempoUso"].ToString()));
                     ListaCompleta.Add(item);
                 }
             }
@@ -78,7 +83,7 @@ namespace pryColomba_IEFI
             List<clsAuditoria> ListaCompleta = new List<clsAuditoria>();
             clsConexionBD Conexion = new clsConexionBD();
 
-            string strQuery = "Select a.Usuario, u.Nombre, a.Fecha, sum(a.TiempoUso) as TiempoUsoTotal from Auditoria a JOIN Usuarios u on u.Codigo = a.Usuario ORDER BY a.Usuario GROUP BY a.Usuario, u.Nombre, a.Fecha, a.TiempoUso";
+            string strQuery = "SELECT a.Usuario, u.Nombre, a.Fecha, SUM(a.TiempoUso) AS TiempoUsoTotal FROM Auditoria a JOIN (SELECT DISTINCT Codigo, Nombre FROM Usuarios) u ON u.Codigo = a.Usuario GROUP BY a.Usuario, u.Nombre, a.Fecha ORDER BY a.Usuario";
             SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
             SqlDataReader reader = objCommand.ExecuteReader();
             if (reader.HasRows)
@@ -98,9 +103,11 @@ namespace pryColomba_IEFI
 
             return ListaCompleta;
         }
+
+        //Gets
         public int GetUsuario()
         {
-            return this.Usuario;
+           return this.Usuario;
         }
         public string GetNomUsuario()
         {

@@ -33,10 +33,10 @@
             this.mnuAdministracion = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdminUsuarios = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdminAuditoria = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuCerrar = new System.Windows.Forms.ToolStripMenuItem();
             this.sstConexion = new System.Windows.Forms.StatusStrip();
             this.lblUsuario = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblFecha = new System.Windows.Forms.ToolStripStatusLabel();
-            this.mnuCerrar = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuModulos.SuspendLayout();
             this.sstConexion.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +74,7 @@
             this.mnuAdminUsuarios.Name = "mnuAdminUsuarios";
             this.mnuAdminUsuarios.Size = new System.Drawing.Size(180, 22);
             this.mnuAdminUsuarios.Text = "Usuarios";
+            this.mnuAdminUsuarios.Click += new System.EventHandler(this.mnuAdminUsuarios_Click);
             // 
             // mnuAdminAuditoria
             // 
@@ -81,6 +82,13 @@
             this.mnuAdminAuditoria.Size = new System.Drawing.Size(180, 22);
             this.mnuAdminAuditoria.Text = "Auditoria";
             this.mnuAdminAuditoria.Click += new System.EventHandler(this.mnuAdminAuditoria_Click);
+            // 
+            // mnuCerrar
+            // 
+            this.mnuCerrar.Name = "mnuCerrar";
+            this.mnuCerrar.Size = new System.Drawing.Size(88, 20);
+            this.mnuCerrar.Text = "Cerrar Sesion";
+            this.mnuCerrar.Click += new System.EventHandler(this.mnuCerrar_Click);
             // 
             // sstConexion
             // 
@@ -106,13 +114,6 @@
             this.lblFecha.Size = new System.Drawing.Size(38, 17);
             this.lblFecha.Text = "Fecha";
             // 
-            // mnuCerrar
-            // 
-            this.mnuCerrar.Name = "mnuCerrar";
-            this.mnuCerrar.Size = new System.Drawing.Size(88, 20);
-            this.mnuCerrar.Text = "Cerrar Sesion";
-            this.mnuCerrar.Click += new System.EventHandler(this.mnuCerrar_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -125,7 +126,7 @@
             this.MainMenuStrip = this.mnuModulos;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmPrincipal";
+            this.Text = "Principal";
             this.mnuModulos.ResumeLayout(false);
             this.mnuModulos.PerformLayout();
             this.sstConexion.ResumeLayout(false);

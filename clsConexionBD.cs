@@ -9,10 +9,12 @@ namespace pryColomba_IEFI
 {
     internal class clsConexionBD
     {
+        //Atributos
         string strConnection = "Server=localhost;Database=IEFI;Trusted_Connection=True;";
         SqlConnection objConnection;
         string strError;
 
+        //Constructor
         public clsConexionBD()
         {
             try
@@ -27,10 +29,14 @@ namespace pryColomba_IEFI
             }
 
         }
+
+        //Funciones
         public void CloseConnection()
         {
             this.objConnection.Close();
         }
+
+        //Gets
         public SqlConnection GetConnection()
         {
             return objConnection;
