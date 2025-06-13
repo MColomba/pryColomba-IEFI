@@ -45,7 +45,7 @@ INSERT INTO Roles (NombreRol)
 VALUES ('Administrador'), ('Empleado')
 --2
 INSERT INTO Usuarios (Nombre, Contraseña, Rol)
-VALUES ('admin','admin', 1)
+VALUES ('admin','admin', 1), ('user', 'user', 2)
 --3
 INSERT INTO Auditoria (Usuario, Fecha, TiempoUso)
 VALUES (1, '20250605', 6), (1, '20250609', 15), (1, '20250615', 8)

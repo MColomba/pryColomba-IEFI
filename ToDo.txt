@@ -1,5 +1,4 @@
 To Do:
--Agregar la capacidad de agregar y modificar usuarios
 
 Optional:
 -Funcion para recuperar la contraseña en el frmLogin
