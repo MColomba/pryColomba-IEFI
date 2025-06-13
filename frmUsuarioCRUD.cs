@@ -65,30 +65,56 @@ namespace pryColomba_IEFI
         public void CargarDatos()
         {
             Usuario.BuscarUsuario(CodigoUsuario);
-            txtUsuario.Text = Usuario.GetNombre();
-            CargarCmbRol();
-            cmbRol.SelectedIndex = Usuario.GetRol() - 1;
-            txtContraseña.Text = Usuario.GetContraseña();
-            Persona.BuscarPersonaPorUsuario(CodigoUsuario);
-            txtDocumento.Text = Persona.GetDocumento();
-            txtNombreCompleto.Text = Persona.GetNombreCompleto();
-            txtDireccion.Text = Persona.GetDireccion();
-            dtpFechaNacimiento.Value = Persona.GetFechaNacimiento();
-            txtTelefono.Text = Persona.GetTelefono();
-        }
-        public void CargarCmbRol()
-        {
-            clsConexionBD Conexion = new clsConexionBD();
-
-            string strQuery = "SELECT * FROM Roles";
-
-            SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
-            SqlDataReader reader = objCommand.ExecuteReader();
-
-            while (reader.Read())
+            if (Usuario.GetError() == "")
             {
-                cmbRol.Items.Insert(int.Parse(reader["Codigo"].ToString()) - 1, reader["NombreRol"].ToString());
+                txtUsuario.Text = Usuario.GetNombre();
+                if (CargarCmbRol() == true)
+                {
+                    cmbRol.SelectedIndex = Usuario.GetRol() - 1;
+                }
+                txtContraseña.Text = Usuario.GetContraseña();
+                Persona.BuscarPersonaPorUsuario(CodigoUsuario);
+                if (Persona.GetError() == "")
+                {
+                    txtDocumento.Text = Persona.GetDocumento();
+                    txtNombreCompleto.Text = Persona.GetNombreCompleto();
+                    txtDireccion.Text = Persona.GetDireccion();
+                    dtpFechaNacimiento.Value = Persona.GetFechaNacimiento();
+                    txtTelefono.Text = Persona.GetTelefono();
+                }
+                else
+                {
+                    MessageBox.Show(Persona.GetError(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
             }
+            else
+            {
+                MessageBox.Show(Usuario.GetError(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }        
+        }
+        public bool CargarCmbRol()
+        {
+            try
+            {
+                clsConexionBD Conexion = new clsConexionBD();
+
+                string strQuery = "SELECT * FROM Roles";
+
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                SqlDataReader reader = objCommand.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    cmbRol.Items.Insert(int.Parse(reader["Codigo"].ToString()) - 1, reader["NombreRol"].ToString());
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al cargar el combo de Roles", MessageBoxButtons.OK ,MessageBoxIcon.Exclamation);
+                return false;
+            }
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

@@ -32,7 +32,7 @@ namespace pryColomba_IEFI
             this.NomUsuario = NomUsuario;
             this.Fecha = Fecha;
             this.TiempoUso= TiempoUso;
-            this.Error = string.Empty;
+            this.Error = "";
         }
 
         //Sets
@@ -44,66 +44,90 @@ namespace pryColomba_IEFI
         //Funciones
         public void GrabarAuditoria()
         {
-            clsConexionBD Conexion = new clsConexionBD();
+            try
+            {
+                clsConexionBD Conexion = new clsConexionBD();
 
-            string strQuery = "INSERT INTO Auditoria (Usuario, Fecha, TiempoUso) VALUES (@usuario, @fecha, @tiempoUso)";
+                string strQuery = "INSERT INTO Auditoria (Usuario, Fecha, TiempoUso) VALUES (@usuario, @fecha, @tiempoUso)";
 
-            SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
-            objCommand.Parameters.AddWithValue("@usuario", this.Usuario);
-            objCommand.Parameters.AddWithValue("@fecha", this.Fecha.Date);
-            objCommand.Parameters.AddWithValue("@tiempoUso", TiempoUso);
-            objCommand.ExecuteNonQuery();
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                objCommand.Parameters.AddWithValue("@usuario", this.Usuario);
+                objCommand.Parameters.AddWithValue("@fecha", this.Fecha.Date);
+                objCommand.Parameters.AddWithValue("@tiempoUso", TiempoUso);
+                objCommand.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
         }
         public List<clsAuditoria> ListarAuditoriaCompleto()
         {
-            List<clsAuditoria> ListaCompleta = new List<clsAuditoria>();
-            clsConexionBD Conexion = new clsConexionBD();
-            clsAuditoria item;
+            try
+            {
+                List<clsAuditoria> ListaCompleta = new List<clsAuditoria>();
+                clsConexionBD Conexion = new clsConexionBD();
+                clsAuditoria item;
 
-            string strQuery = "Select a.Usuario, u.Nombre, a.Fecha, a.TiempoUso from Auditoria a JOIN Usuarios u on u.Codigo = a.Usuario";
-            SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
-            SqlDataReader reader = objCommand.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
+                string strQuery = "Select a.Usuario, u.Nombre, a.Fecha, a.TiempoUso from Auditoria a JOIN Usuarios u on u.Codigo = a.Usuario";
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                SqlDataReader reader = objCommand.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    item = new clsAuditoria(int.Parse(reader["Usuario"].ToString()), reader["Nombre"].ToString(), DateTime.Parse(reader["Fecha"].ToString()), double.Parse(reader["TiempoUso"].ToString()));
-                    ListaCompleta.Add(item);
+                    while (reader.Read())
+                    {
+                        item = new clsAuditoria(int.Parse(reader["Usuario"].ToString()), reader["Nombre"].ToString(), DateTime.Parse(reader["Fecha"].ToString()), double.Parse(reader["TiempoUso"].ToString()));
+                        ListaCompleta.Add(item);
+                    }
                 }
+                else
+                {
+                    Error = "No hay registros";
+                    return null;
+                }
+                Conexion.CloseConnection();
+
+                return ListaCompleta;
             }
-            else
+            catch (Exception ex)
             {
-                Error = "No hay registros";
+                Error = ex.Message;
                 return null;
             }
-            Conexion.CloseConnection();
-
-            return ListaCompleta;
+            
         }
         public List<clsAuditoria> ListarAuditoriaResumido()
         {
-            List<clsAuditoria> ListaCompleta = new List<clsAuditoria>();
-            clsConexionBD Conexion = new clsConexionBD();
+            try
+            {
+                List<clsAuditoria> ListaCompleta = new List<clsAuditoria>();
+                clsConexionBD Conexion = new clsConexionBD();
 
-            string strQuery = "SELECT a.Usuario, u.Nombre, a.Fecha, SUM(a.TiempoUso) AS TiempoUsoTotal FROM Auditoria a JOIN (SELECT DISTINCT Codigo, Nombre FROM Usuarios) u ON u.Codigo = a.Usuario GROUP BY a.Usuario, u.Nombre, a.Fecha ORDER BY a.Usuario";
-            SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
-            SqlDataReader reader = objCommand.ExecuteReader();
-            if (reader.HasRows)
-            {
-                while (reader.Read())
+                string strQuery = "SELECT a.Usuario, u.Nombre, a.Fecha, SUM(a.TiempoUso) AS TiempoUsoTotal FROM Auditoria a JOIN (SELECT DISTINCT Codigo, Nombre FROM Usuarios) u ON u.Codigo = a.Usuario GROUP BY a.Usuario, u.Nombre, a.Fecha ORDER BY a.Usuario";
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                SqlDataReader reader = objCommand.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    clsAuditoria item = new clsAuditoria(int.Parse(reader["Usuario"].ToString()), reader["Nombre"].ToString(), DateTime.Parse(reader["Fecha"].ToString()), double.Parse(reader["TiempoUsoTotal"].ToString()));
-                    ListaCompleta.Add(item);
+                    while (reader.Read())
+                    {
+                        clsAuditoria item = new clsAuditoria(int.Parse(reader["Usuario"].ToString()), reader["Nombre"].ToString(), DateTime.Parse(reader["Fecha"].ToString()), double.Parse(reader["TiempoUsoTotal"].ToString()));
+                        ListaCompleta.Add(item);
+                    }
                 }
+                else
+                {
+                    Error = "No hay registros";
+                    return null;
+                }
+                Conexion.CloseConnection();
+
+                return ListaCompleta;
             }
-            else
+            catch (Exception ex)
             {
-                Error = "No hay registros";
+                Error = ex.Message;
                 return null;
             }
-            Conexion.CloseConnection();
-
-            return ListaCompleta;
         }
 
         //Gets

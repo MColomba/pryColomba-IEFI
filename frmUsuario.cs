@@ -48,5 +48,20 @@ namespace pryColomba_IEFI
             frmUsuarioCRUD Consultar = new frmUsuarioCRUD(0, Codigo);
             Consultar.ShowDialog();
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow FilaSeleccionada = dgvUsuarios.SelectedRows[0];
+            int Codigo = int.Parse(FilaSeleccionada.Cells["Codigo"].Value.ToString());
+
+            clsUsuarios EliminarUser = new clsUsuarios();
+            clsPersona EliminarPersona = new clsPersona();
+
+            EliminarPersona.BorrarPersona(Codigo);
+            EliminarUser.EliminarUsuario(Codigo);
+            
+
+            CargarListado();
+        }
     }
 }

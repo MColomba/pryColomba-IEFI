@@ -1,6 +1,5 @@
 To Do:
--Agregar la capacidad de agregar, modificar y crear usuarios
--Implementar Try-Catch
+-Agregar la capacidad de agregar y modificar usuarios
 
 Optional:
 -Agregar iconos

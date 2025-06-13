@@ -15,10 +15,11 @@ namespace pryColomba_IEFI
         string Direccion;
         DateTime FechaNacimiento;
         string Telefono;
+        string Error;
 
         public clsPersona()
         {
-
+            this.Error = "";
         }
         public void GrabarPersona()
         {
@@ -30,26 +31,53 @@ namespace pryColomba_IEFI
         }
         public void BuscarPersonaPorUsuario(int Codigo)
         {
-            clsConexionBD Conexion = new clsConexionBD();
-
-            string strQuery = "SELECT * FROM Personas where Usuario = '" + Codigo + "'";
-
-            SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
-            SqlDataReader reader = objCommand.ExecuteReader();
-
-            while (reader.Read())
+            try
             {
-                this.Documento = reader["Documento"].ToString();
-                this.NombreCompleto = reader["NombreCompleto"].ToString();
-                this.Direccion = reader["Direccion"].ToString();
-                this.FechaNacimiento = DateTime.Parse(reader["FechaNacimiento"].ToString());
-                this.Telefono = reader["Telefono"].ToString();
+                clsConexionBD Conexion = new clsConexionBD();
+
+                string strQuery = "SELECT * FROM Personas where Usuario = '" + Codigo + "'";
+
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                SqlDataReader reader = objCommand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        this.Documento = reader["Documento"].ToString();
+                        this.NombreCompleto = reader["NombreCompleto"].ToString();
+                        this.Direccion = reader["Direccion"].ToString();
+                        this.FechaNacimiento = DateTime.Parse(reader["FechaNacimiento"].ToString());
+                        this.Telefono = reader["Telefono"].ToString();
+                    }
+                }
+                else
+                {
+                    Error = "No existe la persona";
+                }
+                Conexion.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
             }
         }
 
-        public void BorrarPersona()
+        public void BorrarPersona(int Codigo)
         {
+            try
+            {
+                clsConexionBD Conexion = new clsConexionBD();
 
+                string strQuery = "DELETE FROM Personas WHERE Usuario = @codigo";
+
+                SqlCommand cmd = new SqlCommand(strQuery, Conexion.GetConnection());
+                cmd.Parameters.AddWithValue("@codigo", Codigo);
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
         }
 
         //Gets
@@ -72,6 +100,10 @@ namespace pryColomba_IEFI
         public string GetTelefono()
         {
             return this.Telefono;
+        }
+        public string GetError()
+        {
+            return this.Error;
         }
     }
 }
