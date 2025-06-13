@@ -35,5 +35,18 @@ namespace pryColomba_IEFI
         {
             this.Close();
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmUsuarioCRUD Agregar = new frmUsuarioCRUD(1, 0);
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow FilaSeleccionada = dgvUsuarios.SelectedRows[0];
+            int Codigo = int.Parse(FilaSeleccionada.Cells["Codigo"].Value.ToString());
+            frmUsuarioCRUD Consultar = new frmUsuarioCRUD(0, Codigo);
+            Consultar.ShowDialog();
+        }
     }
 }

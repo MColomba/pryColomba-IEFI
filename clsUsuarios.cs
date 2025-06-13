@@ -13,6 +13,7 @@ namespace pryColomba_IEFI
         int Codigo;
         string Nombre;
         int Rol;
+        string Contraseña;
         string NombreRol;
         string Error;
 
@@ -44,7 +45,6 @@ namespace pryColomba_IEFI
             bool Validado = false;
             clsConexionBD Conexion = new clsConexionBD();
             
-
             string strQuery = "SELECT * FROM Usuarios where NOMBRE = '" + Nombre +"'";
 
             SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
@@ -90,7 +90,32 @@ namespace pryColomba_IEFI
             objCommand.Parameters.AddWithValue("@rol", this.Rol);
             objCommand.ExecuteNonQuery();
         }
+        public void BuscarUsuario(int Codigo)
+        {
+            clsConexionBD Conexion = new clsConexionBD();
 
+            string strQuery = "SELECT * FROM Usuarios where Codigo = '" + Codigo + "'";
+
+            SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+            SqlDataReader reader = objCommand.ExecuteReader();
+
+            while (reader.Read())
+            {
+                this.Nombre = reader["Nombre"].ToString();
+                this.Rol = int.Parse(reader["Rol"].ToString());
+                this.Contraseña = reader["Contraseña"].ToString();
+            }
+        }
+
+        public void EliminarUsuario(int Codigo)
+        {
+
+        }
+
+        public void ModificarUsuario()
+        {
+
+        }
         public List<clsUsuarios> ListarUsuarios()
         {
             List<clsUsuarios> Lista = new List<clsUsuarios>();
@@ -123,6 +148,10 @@ namespace pryColomba_IEFI
         public string GetNombre()
         {
             return this.Nombre;
+        }
+        public string GetContraseña()
+        {
+            return this.Contraseña;
         }
         public int GetCodigo()
         {

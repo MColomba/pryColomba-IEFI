@@ -14,12 +14,19 @@ namespace pryColomba_IEFI
     {
         clsAuditoria Auditoria;
         int CodigoUsuario;
-        public frmPrincipal(int Codigo, string Nombre)
+        int Rol;
+
+        public frmPrincipal(int Codigo, string Nombre, int Rol)
         {
             InitializeComponent();
             CodigoUsuario = Codigo;
             lblUsuario.Text = Nombre;
             lblFecha.Text = DateTime.Now.ToString();
+            this.Rol = Rol;
+            if (Rol != 1)
+            {
+                mnuAdministracion.Visible = false;
+            }
             IniciarAuditoria();
         }
         public void IniciarAuditoria()

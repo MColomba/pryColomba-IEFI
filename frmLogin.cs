@@ -28,7 +28,7 @@ namespace pryColomba_IEFI
             clsUsuarios UsuarioLog = new clsUsuarios();
             if (UsuarioLog.ValidarUsuario(txtUsuario.Text, txtContraseña.Text) != false)
             {
-                frmPrincipal Principal = new frmPrincipal(UsuarioLog.GetCodigo(), UsuarioLog.GetNombre());
+                frmPrincipal Principal = new frmPrincipal(UsuarioLog.GetCodigo(), UsuarioLog.GetNombre(), UsuarioLog.GetRol());
                 Principal.ShowDialog();
                 Principal = null;
                 this.Show();
