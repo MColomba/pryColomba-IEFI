@@ -64,7 +64,7 @@
             this.tabUsuario.Name = "tabUsuario";
             this.tabUsuario.Padding = new System.Drawing.Point(0, 0);
             this.tabUsuario.SelectedIndex = 0;
-            this.tabUsuario.Size = new System.Drawing.Size(264, 199);
+            this.tabUsuario.Size = new System.Drawing.Size(298, 199);
             this.tabUsuario.TabIndex = 0;
             // 
             // tabUsuarioDatos
@@ -79,7 +79,7 @@
             this.tabUsuarioDatos.Location = new System.Drawing.Point(4, 22);
             this.tabUsuarioDatos.Name = "tabUsuarioDatos";
             this.tabUsuarioDatos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabUsuarioDatos.Size = new System.Drawing.Size(256, 173);
+            this.tabUsuarioDatos.Size = new System.Drawing.Size(290, 173);
             this.tabUsuarioDatos.TabIndex = 0;
             this.tabUsuarioDatos.Text = "Datos Usuario";
             // 
@@ -148,7 +148,7 @@
             this.tabPersonaDatos.Location = new System.Drawing.Point(4, 22);
             this.tabPersonaDatos.Name = "tabPersonaDatos";
             this.tabPersonaDatos.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPersonaDatos.Size = new System.Drawing.Size(256, 173);
+            this.tabPersonaDatos.Size = new System.Drawing.Size(290, 173);
             this.tabPersonaDatos.TabIndex = 1;
             this.tabPersonaDatos.Text = "Datos Personales";
             // 
@@ -156,36 +156,37 @@
             // 
             this.txtTelefono.Location = new System.Drawing.Point(143, 126);
             this.txtTelefono.Name = "txtTelefono";
-            this.txtTelefono.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefono.Size = new System.Drawing.Size(141, 20);
             this.txtTelefono.TabIndex = 9;
             // 
             // dtpFechaNacimiento
             // 
-            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaNacimiento.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpFechaNacimiento.Location = new System.Drawing.Point(143, 99);
             this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
-            this.dtpFechaNacimiento.Size = new System.Drawing.Size(100, 20);
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(141, 20);
             this.dtpFechaNacimiento.TabIndex = 8;
             // 
             // txtDireccion
             // 
             this.txtDireccion.Location = new System.Drawing.Point(143, 73);
             this.txtDireccion.Name = "txtDireccion";
-            this.txtDireccion.Size = new System.Drawing.Size(100, 20);
+            this.txtDireccion.Size = new System.Drawing.Size(141, 20);
             this.txtDireccion.TabIndex = 7;
             // 
             // txtNombreCompleto
             // 
             this.txtNombreCompleto.Location = new System.Drawing.Point(143, 47);
             this.txtNombreCompleto.Name = "txtNombreCompleto";
-            this.txtNombreCompleto.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreCompleto.Size = new System.Drawing.Size(141, 20);
             this.txtNombreCompleto.TabIndex = 6;
             // 
             // txtDocumento
             // 
             this.txtDocumento.Location = new System.Drawing.Point(143, 21);
             this.txtDocumento.Name = "txtDocumento";
-            this.txtDocumento.Size = new System.Drawing.Size(100, 20);
+            this.txtDocumento.Size = new System.Drawing.Size(141, 20);
             this.txtDocumento.TabIndex = 5;
             // 
             // lblTelefono
@@ -241,6 +242,7 @@
             this.btnGrabar.TabIndex = 1;
             this.btnGrabar.Text = "Guardar";
             this.btnGrabar.UseVisualStyleBackColor = true;
+            this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
             // btnCancelar
             // 
@@ -257,12 +259,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(294, 270);
+            this.ClientSize = new System.Drawing.Size(319, 270);
             this.ControlBox = false;
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.tabUsuario);
             this.Name = "frmUsuarioCRUD";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Usuario - ";
             this.tabUsuario.ResumeLayout(false);
             this.tabUsuarioDatos.ResumeLayout(false);

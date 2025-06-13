@@ -21,13 +21,51 @@ namespace pryColomba_IEFI
         {
             this.Error = "";
         }
-        public void GrabarPersona()
+        public void GrabarPersona(int Codigo, string Documento, string NombreCompleto, string Direccion, DateTime FechaNacimiento, string Telefono)
         {
+            try
+            {
+                clsConexionBD Conexion = new clsConexionBD();
 
+                string strQuery = "INSERT INTO Personas (Usuario, Documento, NombreCompleto, Direccion, FechaNacimiento, Telefono) VALUES (@usuario, @documento, @nombre, @direccion, @fecha, @telefono)";
+
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                objCommand.Parameters.AddWithValue("@usuario", Codigo);
+                objCommand.Parameters.AddWithValue("@documento", Documento);
+                objCommand.Parameters.AddWithValue("@nombre", NombreCompleto);
+                objCommand.Parameters.AddWithValue("@direccion", Direccion);
+                objCommand.Parameters.AddWithValue("@fecha", FechaNacimiento.Date);
+                objCommand.Parameters.AddWithValue("@telefono", Telefono);
+                objCommand.ExecuteNonQuery();
+                Conexion.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
         }
-         public void ModificarPersona()
+        public void ModificarPersona(int Codigo, string Documento, string NombreCompleto, string Direccion, DateTime FechaNacimiento, string Telefono)
         {
+            try
+            {
+                clsConexionBD Conexion = new clsConexionBD();
 
+                string strQuery = "UPDATE Personas SET Documento = @documento, NombreCompleto = @nombre, Direccion = @direccion, FechaNacimiento = @fecha, Telefono = @telefono where Usuario = @codigo";
+
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                objCommand.Parameters.AddWithValue("@codigo", Codigo);
+                objCommand.Parameters.AddWithValue("@documento", Documento);
+                objCommand.Parameters.AddWithValue("@nombre", NombreCompleto);
+                objCommand.Parameters.AddWithValue("@direccion", Direccion);
+                objCommand.Parameters.AddWithValue("@fecha", FechaNacimiento.Date);
+                objCommand.Parameters.AddWithValue("@telefono", Telefono);
+                objCommand.ExecuteNonQuery();
+                Conexion.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
         }
         public void BuscarPersonaPorUsuario(int Codigo)
         {
@@ -35,7 +73,7 @@ namespace pryColomba_IEFI
             {
                 clsConexionBD Conexion = new clsConexionBD();
 
-                string strQuery = "SELECT * FROM Personas where Usuario = '" + Codigo + "'";
+                string strQuery = "SELECT * FROM Personas where Usuario = " + Codigo;
 
                 SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
                 SqlDataReader reader = objCommand.ExecuteReader();

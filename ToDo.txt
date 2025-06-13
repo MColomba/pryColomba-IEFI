@@ -2,6 +2,6 @@ To Do:
 -Agregar la capacidad de agregar y modificar usuarios
 
 Optional:
--Agregar iconos
 -Funcion para recuperar la contraseña en el frmLogin
 -Exportar a excel en el frmAuditoria
+-Agregar la capacidad de buscar por usuario en auditoria

@@ -49,6 +49,7 @@ namespace pryColomba_IEFI
                 //Agregar
                 case 1:
                     this.Text += "Agregar";
+                    CargarCmbRol();
                     break;
                 //Modificar
                 case 2:
@@ -92,6 +93,51 @@ namespace pryColomba_IEFI
                 MessageBox.Show(Usuario.GetError(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }        
         }
+        public bool Validar()
+        {
+            bool valida = true;
+            if (txtUsuario.Text == "")
+            {
+                MessageBox.Show("Falta completar el campo Usuario", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                valida = false;
+            }
+            if (txtContraseña.Text == "")
+            {
+                MessageBox.Show("Falta completar el campo Contraseña", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                valida = false;
+            }
+            if (cmbRol.SelectedIndex == -1)
+            {
+                MessageBox.Show("Falta completar el campo Rol", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                valida = false;
+            }
+            if (txtDocumento.Text == "")
+            {
+                MessageBox.Show("Falta completar el campo Documento", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                valida = false;
+            }
+            if (txtNombreCompleto.Text == "")
+            {
+                MessageBox.Show("Falta completar el campo Apellido, Nombre", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                valida = false;
+            }
+            if (txtDireccion.Text == "")
+            {
+                MessageBox.Show("Falta completar el campo Direccion", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                valida = false;
+            }
+            if (dtpFechaNacimiento.Value >= DateTime.Now)
+            {
+                MessageBox.Show("Fecha Incorrecta", "Fecha Incorrecta", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                valida = false;
+            }
+            if (txtTelefono.Text == "")
+            {
+                MessageBox.Show("Falta completar el campo Telefono", "Datos Incompletos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                valida = false;
+            }
+            return valida;
+        }
         public bool CargarCmbRol()
         {
             try
@@ -119,6 +165,39 @@ namespace pryColomba_IEFI
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void btnGrabar_Click(object sender, EventArgs e)
+        {
+            switch (Modo)
+            {
+                //Consultar
+                case 0:
+                    MessageBox.Show("No se deberia de poder ver este boton a la hora de consultar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+                //Agregar
+                case 1:
+                    if (Validar() == true)
+                    {
+                        Usuario.GrabarUsuario(txtUsuario.Text, txtContraseña.Text, cmbRol.SelectedIndex + 1);
+                        int auxCodigo = Usuario.BuscarCodUsuarioPorNombre(txtUsuario.Text);
+                        Persona.GrabarPersona(auxCodigo, txtDocumento.Text, txtNombreCompleto.Text, txtDireccion.Text, dtpFechaNacimiento.Value, txtTelefono.Text);
+                    }
+                    break;
+                //Modificar
+                case 2:
+                    if (Validar() == true)
+                    {
+                        Usuario.ModificarUsuario(CodigoUsuario, txtUsuario.Text, txtContraseña.Text, cmbRol.SelectedIndex + 1);
+                        Persona.ModificarPersona(CodigoUsuario, txtDocumento.Text, txtNombreCompleto.Text, txtDireccion.Text, dtpFechaNacimiento.Value, txtTelefono.Text);
+                    }
+                    break;
+                //Error
+                default:
+                    MessageBox.Show("Error en boton Grabar", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+            }
             this.Close();
         }
     }

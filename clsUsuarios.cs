@@ -87,7 +87,7 @@ namespace pryColomba_IEFI
             }
         }
 
-        public void GrabarUsuario(string Contraseña)
+        public void GrabarUsuario(string Nombre, string Contraseña, int Rol)
         {
             try
             {
@@ -96,9 +96,9 @@ namespace pryColomba_IEFI
                 string strQuery = "INSERT INTO Usuarios (Nombre, Contraseña, Rol) VALUES (@nombre, @contraseña, @rol)";
 
                 SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
-                objCommand.Parameters.AddWithValue("@nombre", this.Nombre);
+                objCommand.Parameters.AddWithValue("@nombre", Nombre);
                 objCommand.Parameters.AddWithValue("@contraseña", Contraseña);
-                objCommand.Parameters.AddWithValue("@rol", this.Rol);
+                objCommand.Parameters.AddWithValue("@rol", Rol);
                 objCommand.ExecuteNonQuery();
                 Conexion.CloseConnection();
             }
@@ -113,7 +113,7 @@ namespace pryColomba_IEFI
             {
                 clsConexionBD Conexion = new clsConexionBD();
 
-                string strQuery = "SELECT * FROM Usuarios where Codigo = '" + Codigo + "'";
+                string strQuery = "SELECT * FROM Usuarios where Codigo = " + Codigo;
 
                 SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
                 SqlDataReader reader = objCommand.ExecuteReader();
@@ -137,6 +137,38 @@ namespace pryColomba_IEFI
                 Error = ex.Message;
             }
         }
+        public int BuscarCodUsuarioPorNombre(string Nombre)
+        {
+            int Codigo = 0;
+            try
+            {
+                clsConexionBD Conexion = new clsConexionBD();
+
+                string strQuery = "SELECT * FROM Usuarios where Nombre = '" + Nombre + "'";
+
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                SqlDataReader reader = objCommand.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Codigo = int.Parse(reader["Codigo"].ToString());
+                    }
+                }
+                else
+                {
+                    Error = "No existe el usuario";
+                    return Codigo;
+                }
+                Conexion.CloseConnection();
+                return Codigo;
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+                return Codigo;
+            }
+        }
 
         public void EliminarUsuario(int Codigo)
         {
@@ -146,9 +178,9 @@ namespace pryColomba_IEFI
 
                 string strQuery = "DELETE FROM Usuarios WHERE Codigo = @codigo";
 
-                SqlCommand cmd = new SqlCommand(strQuery, Conexion.GetConnection());
-                cmd.Parameters.AddWithValue("@codigo", Codigo);
-                cmd.ExecuteNonQuery();
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                objCommand.Parameters.AddWithValue("@codigo", Codigo);
+                objCommand.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
@@ -156,9 +188,26 @@ namespace pryColomba_IEFI
             }
         }
 
-        public void ModificarUsuario()
+        public void ModificarUsuario(int Codigo, string Nombre, string Contraseña, int Rol)
         {
+            try
+            {
+                clsConexionBD Conexion = new clsConexionBD();
 
+                string strQuery = "UPDATE Usuarios SET Nombre = @nombre, Contraseña = @contraseña, Rol = @rol where Codigo = @codigo";
+
+                SqlCommand objCommand = new SqlCommand(strQuery, Conexion.GetConnection());
+                objCommand.Parameters.AddWithValue("@codigo", Codigo);
+                objCommand.Parameters.AddWithValue("@nombre", Nombre);
+                objCommand.Parameters.AddWithValue("@contraseña", Contraseña);
+                objCommand.Parameters.AddWithValue("@rol", Rol);
+                objCommand.ExecuteNonQuery();
+                Conexion.CloseConnection();
+            }
+            catch (Exception ex)
+            {
+                Error = ex.Message;
+            }
         }
         public List<clsUsuarios> ListarUsuarios()
         {

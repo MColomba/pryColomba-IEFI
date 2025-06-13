@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPrincipal));
             this.mnuModulos = new System.Windows.Forms.MenuStrip();
             this.mnuTareas = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAdministracion = new System.Windows.Forms.ToolStripMenuItem();
@@ -123,6 +124,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.sstConexion);
             this.Controls.Add(this.mnuModulos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuModulos;
             this.Name = "frmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
